@@ -8,3 +8,11 @@ library(gitcreds)
 gitcreds_set()
 #4. Sync Your Project
 usethis::use_git()
+
+#py check
+library(reticulate)
+repl_python()
+
+
+print("Success!")
+exit
