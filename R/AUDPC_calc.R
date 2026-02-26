@@ -1,4 +1,4 @@
-# 1. Install necessary packages if you don't have them
+# 1. Install necessary packages
 # install.packages(c("tidyverse", "agricolae"))
 
 library(tidyverse)
@@ -151,7 +151,8 @@ reps_per_geno <- audpc_results %>%
 r_harmonic <- length(reps_per_geno$count) / sum(1 / reps_per_geno$count)
 
 # 4. Calculate H2
-H2 <- Vg / (Vg + (Ve / r_harmonic))
+H2 <- Vg / (Vg + (Ve / r_harmonic)) #or just change this with the # of replicates
+ H2 <- Vg / (Vg + (Ve / 3))
 
 # Print the result
 cat("\n--- Variance Components ---\n")
