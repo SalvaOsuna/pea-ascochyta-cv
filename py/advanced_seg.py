@@ -15,25 +15,25 @@ def test_advanced_segmentation(image_path, output_dir="visual_checks"):
         
     img_hsv = cv2.cvtColor(img_bgr, cv2.COLOR_BGR2HSV)
 
-    # 2. Isolate the TRUE leaf (Captures everything from brown to green)
-    lower_plant = np.array([5, 75, 75])
-    upper_plant = np.array([90, 255, 255])
+    # 1. Isolate the TRUE leaf (From Attached 1: Hue 0-179, Sat 10-255, Val 50-200)
+    lower_plant = np.array([0, 9, 50])
+    upper_plant = np.array([179, 255, 200])
     leaf_mask = cv2.inRange(img_hsv, lower_plant, upper_plant)
 
-    # 3. Isolate Chlorosis (Yellow hues: ~30 to 35)
-    lower_chlorosis = np.array([30, 40, 20])
-    upper_chlorosis = np.array([35, 255, 255])
+    # 2. Isolate Healthy (From Attached 2: Hue 35-60)
+    lower_healthy = np.array([46, 10, 50])
+    upper_healthy = np.array([179, 255, 200])
+    healthy_mask = cv2.inRange(img_hsv, lower_healthy, upper_healthy)
+
+    # 3. Isolate Chlorosis (Top half of Attached 3: Hue 30-34)
+    lower_chlorosis = np.array([30, 10, 50])
+    upper_chlorosis = np.array([45, 255, 200])
     chlorosis_mask = cv2.inRange(img_hsv, lower_chlorosis, upper_chlorosis)
 
-    # 4. Isolate Necrosis (Brown/Dark hues: ~5 to 29)
-    lower_necrosis = np.array([5, 40, 20])
-    upper_necrosis = np.array([29, 255, 255])
+    # 4. Isolate Necrosis (Bottom half of Attached 3: Hue 0-29)
+    lower_necrosis = np.array([1, 10, 50])
+    upper_necrosis = np.array([29, 255, 200])
     necrosis_mask = cv2.inRange(img_hsv, lower_necrosis, upper_necrosis)
-    
-    # 5. Isolate Healthy (Green hues: ~36 to 90)
-    lower_healthy = np.array([36, 40, 20])
-    upper_healthy = np.array([90, 255, 255])
-    healthy_mask = cv2.inRange(img_hsv, lower_healthy, upper_healthy)
 
     # Ensure masks only apply strictly within the boundaries of the isolated leaf
     chlorosis_mask = cv2.bitwise_and(chlorosis_mask, leaf_mask)
@@ -69,7 +69,7 @@ def test_advanced_segmentation(image_path, output_dir="visual_checks"):
 
     # Add the requested titles (adjust the '2' and '5' if the font is too large or thick)
     font = cv2.FONT_HERSHEY_SIMPLEX
-    text_color = (273, 41, 57) # Red text
+    text_color = (273, 41, 57) # Blue text
     cv2.putText(img_titled, "raw image", (30, 80), font, 2, text_color, 5)
     cv2.putText(leaf_titled, "isolated leaf", (30, 80), font, 2, text_color, 5)
     cv2.putText(chlorosis_titled, "clorosis", (30, 80), font, 2, text_color, 5)
@@ -85,5 +85,6 @@ def test_advanced_segmentation(image_path, output_dir="visual_checks"):
     print(f"Saved visual check to: {save_path}")
 
 # --- RUN THE TEST ---
-test_image = "InocII_sAUDPC_all/R1/6_R1_8dpi.jpg" 
+test_image = "InocII_sAUDPC_all/R1/6_R1_1dpi.jpg" 
+test_image = "calibrated_images/6_R1_8dpi.jpg"
 test_advanced_segmentation(test_image)

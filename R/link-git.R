@@ -13,6 +13,5 @@ usethis::use_git()
 library(reticulate)
 repl_python()
 
-
 print("Success!")
 exit
