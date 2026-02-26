@@ -7,3 +7,4 @@ create_github_token()
 library(gitcreds)
 gitcreds_set()
 #4. Sync Your Project
+usethis::use_git()
