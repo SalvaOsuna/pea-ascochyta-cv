@@ -25,3 +25,8 @@ repl_python()
 
 print("Success!")
 exit
+
+#delete later
+install.packages("FielDHub")
+library(FielDHub)
+run_app()
