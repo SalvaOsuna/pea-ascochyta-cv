@@ -5,7 +5,7 @@ library(tidyverse)
 library(agricolae)
 
 # 2. Load the Python-generated CSV
-pheno_data <- read.csv("pea_phenotype_results.csv", sep = ";")
+pheno_data <- read.csv("InocIII_sAUDPC_all/pea_phenotype_results_InocIII.csv")
 
 # 3. Clean and prepare the data
 pheno_clean <- pheno_data %>%
@@ -59,8 +59,8 @@ genotype_means <- audpc_results %>%
 
 # 6. View and Export
 head(audpc_results)
-write.csv(audpc_results, "AUDPC_Final_Calculations.csv", row.names = FALSE)
-write.csv(genotype_means, "AUDPC_Genotype_Means.csv", row.names = FALSE)
+write.csv(audpc_results, "InocIII_sAUDPC_all/AUDPC_Final_Calculations.csv", row.names = FALSE)
+write.csv(genotype_means, "InocIII_sAUDPC_all/AUDPC_Genotype_Means.csv", row.names = FALSE)
 
 #transformation####
 library(tidyverse)
@@ -129,7 +129,7 @@ blup_df <- data.frame(
   arrange(BLUP_Adjusted)
 
 head(blup_df) # View the most resistant genotypes
-write.csv(blup_df, "AUDPC_Total_BLUP.csv", row.names = FALSE)
+write.csv(blup_df, "InocIII_sAUDPC_all/AUDPC_Total_BLUP.csv", row.names = FALSE)
 
 #heritability####
 library(lme4)
