@@ -4,7 +4,7 @@ import os
 import glob
 import csv
 
-def analyze_calibrated_images(input_dir, output_csv="pea_phenotype_results.csv", output_img_dir="batch_visual_checks"):
+def analyze_calibrated_images(input_dir, output_csv="InocIII_sAUDPC_all/pea_phenotype_results_InocIII.csv", output_img_dir="InocIII_sAUDPC_all/batch_visual_checks"):
     # Create the output directory for the images
     if not os.path.exists(output_img_dir):
         os.makedirs(output_img_dir)
@@ -53,23 +53,23 @@ def analyze_calibrated_images(input_dir, output_csv="pea_phenotype_results.csv",
 
             # --- TISSUE SEGMENTATION ---
             # 1. Isolate the TRUE leaf (From Attached 1: Hue 0-179, Sat 10-255, Val 50-200)
-            lower_plant = np.array([0, 9, 50])
+            lower_plant = np.array([0, 6, 50])
             upper_plant = np.array([179, 255, 200])
             leaf_mask = cv2.inRange(img_hsv, lower_plant, upper_plant)
 
             # 2. Isolate Healthy (From Attached 2: Hue 35-60)
-            lower_healthy = np.array([46, 10, 50])
-            upper_healthy = np.array([179, 255, 200])
+            lower_healthy = np.array([65, 6, 50])
+            upper_healthy = np.array([110, 255, 200])
             healthy_mask = cv2.inRange(img_hsv, lower_healthy, upper_healthy)
 
             # 3. Isolate Chlorosis (Top half of Attached 3: Hue 30-34)
-            lower_chlorosis = np.array([30, 10, 50])
-            upper_chlorosis = np.array([45, 255, 200])
+            lower_chlorosis = np.array([110, 6, 50])
+            upper_chlorosis = np.array([155, 255, 200])
             chlorosis_mask = cv2.inRange(img_hsv, lower_chlorosis, upper_chlorosis)
 
             # 4. Isolate Necrosis (Bottom half of Attached 3: Hue 0-29)
-            lower_necrosis = np.array([1, 10, 50])
-            upper_necrosis = np.array([29, 255, 200])
+            lower_necrosis = np.array([155, 6, 50])
+            upper_necrosis = np.array([179, 255, 200])
             necrosis_mask = cv2.inRange(img_hsv, lower_necrosis, upper_necrosis)
 
             # Ensure masks only apply strictly within the boundaries of the isolated leaf
@@ -161,5 +161,5 @@ def analyze_calibrated_images(input_dir, output_csv="pea_phenotype_results.csv",
     print(f"\n=== Analysis Complete! Results saved to {output_csv} ===")
 
 # --- RUN THE BATCH ANALYSIS ---
-input_directory = "calibrated_images" 
+input_directory = "InocIII_sAUDPC_all/calibrated_images" 
 analyze_calibrated_images(input_directory)

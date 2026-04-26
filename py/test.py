@@ -65,6 +65,6 @@ def analyze_pea_leaf_and_save(image_path, output_dir="visual_checks"):
     print(f"Saved visual check to: {save_path}")
 
 # --- RUN THE TEST ---
-test_image = "InocII_sAUDPC_all/R1/6_R1_5dpi.jpg" 
+test_image = "InocIII_sAUDPC_all/R1/6_R1_8dpi.jpg" 
 analyze_pea_leaf_and_save(test_image)
 

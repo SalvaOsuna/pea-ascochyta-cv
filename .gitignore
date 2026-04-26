@@ -5,6 +5,5 @@
 .DS_Store
 .quarto
 /InocII_sAUDPC_all
-/batch_visual_checks
-/calibrated_images
 /visual_checks
+/InocIII_sAUDPC_all

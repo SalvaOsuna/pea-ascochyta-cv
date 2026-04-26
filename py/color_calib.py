@@ -66,7 +66,7 @@ def apply_color_correction(img_bgr, ccm):
 
     return final_img
 
-def batch_calibrate(input_dir, output_dir="calibrated_images"):
+def batch_calibrate(input_dir, output_dir="InocIII_sAUDPC_all/calibrated_images"):
     if not os.path.exists(output_dir):
         os.makedirs(output_dir)
 
@@ -120,7 +120,7 @@ def batch_calibrate(input_dir, output_dir="calibrated_images"):
     print("\n=== Calibration Complete ===")
 
 # --- RUN THE SCRIPT ---
-input_directory = "InocII_sAUDPC_all/R1/"
-input_directory = "InocII_sAUDPC_all/R2/" 
-input_directory = "InocII_sAUDPC_all/R3/" 
+input_directory = "InocIII_sAUDPC_all/R1/"
+input_directory = "InocIII_sAUDPC_all/R2/" 
+input_directory = "InocIII_sAUDPC_all/R3/" 
 batch_calibrate(input_directory)

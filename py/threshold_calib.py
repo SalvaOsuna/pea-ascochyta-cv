@@ -77,7 +77,6 @@ def launch_calibrator(image_path):
     cv2.destroyAllWindows()
 
 # --- Run it on your 1dpi image first, then an 8dpi image ---
-test_image = "InocII_sAUDPC_all/R1/1_R1_1dpi.jpg"
-test_image = "calibrated_images/25_R2_8dpi.jpg"
+test_image = "InocIII_sAUDPC_all/calibrated_images/11_R3_8dpi.jpg"
 launch_calibrator(test_image)
 

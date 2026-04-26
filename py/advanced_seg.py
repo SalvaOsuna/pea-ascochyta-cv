@@ -85,6 +85,6 @@ def test_advanced_segmentation(image_path, output_dir="visual_checks"):
     print(f"Saved visual check to: {save_path}")
 
 # --- RUN THE TEST ---
-test_image = "InocII_sAUDPC_all/R1/6_R1_1dpi.jpg" 
-test_image = "calibrated_images/6_R1_8dpi.jpg"
+test_image = "InocIII_sAUDPC_all/R1/6_R1_1dpi.jpg" 
+test_image = "InocIII_sAUDPC_all/calibrated_images/6_R1_3dpi.jpg"
 test_advanced_segmentation(test_image)
